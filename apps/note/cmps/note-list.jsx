@@ -6,7 +6,7 @@ export function NoteList({ notes }) {
         
         {
             notes.map(note => {
-               return <NotePreview note={note} />
+               return <NotePreview key = {note.id} note={note} />
             })
         }
 

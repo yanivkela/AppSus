@@ -29,18 +29,9 @@ export function NoteIndex() {
 
     return <section className="note-index">
 
-
-
-        <div className="main">
+        <div className="main justify-center align-item" >
             <NoteList notes={notes} />
-
         </div>
-
-
-        <div className="footer">
-            dd
-        </div>
-
 
     </section>
 
