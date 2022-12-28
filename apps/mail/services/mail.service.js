@@ -16,7 +16,9 @@ const loggedInUser = {
 
 export const mailService = {
     query,
-    defaultCriteria
+    defaultCriteria,
+    save,
+    remove
 }
 
 const mockupEmails = [
@@ -24,9 +26,10 @@ const mockupEmails = [
         id: utilService.makeId(),
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
-        isRead: false,
+        isRead: true,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
     },
@@ -38,6 +41,7 @@ const mockupEmails = [
         isRead: false,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
     },
@@ -48,6 +52,7 @@ const mockupEmails = [
         isRead: false,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'user@appsus.com',
         to: 'momo@momo.com'
     },
@@ -58,6 +63,7 @@ const mockupEmails = [
         isRead: false,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
     },
@@ -68,6 +74,7 @@ const mockupEmails = [
         isRead: false,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'user@appsus.com',
         to: 'momo@momo.com'
     },
@@ -75,9 +82,10 @@ const mockupEmails = [
         id: utilService.makeId(),
         subject: 'Start with Search',
         body: 'Start with Search Start with Search Start with Search',
-        isRead: false,
+        isRead: true,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
     },
@@ -88,6 +96,7 @@ const mockupEmails = [
         isRead: false,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'user@appsus.com',
         to: 'momo@momo.com'
     },
@@ -98,6 +107,7 @@ const mockupEmails = [
         isRead: false,
         isStared: false,
         sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        isTrash: false,
         from: 'momo@momo.com',
         to: 'user@appsus.com'
     },
@@ -135,4 +145,13 @@ function query(criteria = defaultCriteria) {
         return emails
     })
 
+}
+
+function save(email) {
+    if (email.id) return storageService.put(EMAIL_KEY, email)
+    else return storageService.post(EMAIL_KEY, email)
+}
+
+function remove(emailId) {
+    return storageService.remove(EMAIL_KEY, emailId)
 }
