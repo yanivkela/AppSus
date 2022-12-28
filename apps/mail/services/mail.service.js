@@ -1,1 +1,138 @@
-console.log('Hi')
+import { storageService } from "../../../services/async-storage.service.js";
+import { utilService } from "../../../services/util.service.js"
+const EMAIL_KEY = "emailDB"
+
+const defaultCriteria = {
+    status: 'inbox',
+    txt: '',
+    isRead: '',
+    isStared: '',
+}
+
+const loggedInUser = {
+    email: 'user@appsus.com',
+    fullname: 'Mahatma Appsus'
+}
+
+export const mailService = {
+    query,
+    defaultCriteria
+}
+
+const mockupEmails = [
+    {
+        id: utilService.makeId(),
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'momo@momo.com',
+        to: 'user@appsus.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'Renders the subject',
+        body: `Renders the subject Renders the  subject Renders the subject subject Renders the subject
+         subject Renders the subject subject Renders theRenders the subject   Renders theRenders the subject  Renders theRenders the subject`,
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'momo@momo.com',
+        to: 'user@appsus.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'Support hover state',
+        body: 'Support hover state Support hover state Support hover state',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'user@appsus.com',
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'show the entire email',
+        body: 'show the entire email show the entire email show the entire email',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'momo@momo.com',
+        to: 'user@appsus.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'Allow filtering',
+        body: 'Allow filtering Allow filtering Allow filtering',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'user@appsus.com',
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'Start with Search',
+        body: 'Start with Search Start with Search Start with Search',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'momo@momo.com',
+        to: 'user@appsus.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'Use the service to ',
+        body: 'Use the service to Use the service to Use the service to',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'user@appsus.com',
+        to: 'momo@momo.com'
+    },
+    {
+        id: utilService.makeId(),
+        subject: 'Allow keeping an email as ',
+        body: 'Allow keeping an email as Allow keeping an email as Allow keeping an email as',
+        isRead: false,
+        isStared: false,
+        sentAt: utilService.getRandomIntInclusive(Date.now()-1000*60*60*24*10, Date.now()),
+        from: 'momo@momo.com',
+        to: 'user@appsus.com'
+    },
+]
+
+function query(criteria = defaultCriteria) {
+    return storageService.query(EMAIL_KEY).then(emails => {
+        if (!emails || !emails.length) {
+            emails = mockupEmails
+            utilService.saveToLocalStorage(EMAIL_KEY, emails)
+            return emails
+        } else return emails
+    }).then(emails => {
+        switch (criteria.status) {
+            case 'inbox':
+                emails = emails.filter(email => email.to === loggedInUser.email && !email.isTrash)
+                break
+            case 'sent':
+                emails = emails.filter(email => email.from === loggedInUser.email && !email.isDraft)
+                break
+            case 'trash':
+                emails = emails.filter(email => email.isTrash)
+                break
+            case 'draft':
+                emails = emails.filter(email => email.isDraft)
+        }
+        emails = emails.filter(email => email.subject.includes(criteria.txt) || 
+        email.body.includes(criteria.txt) || 
+        email.to.includes(criteria.txt) ||
+        email.from.includes(criteria.txt))
+
+        if (criteria.isRead) emails = emails.filter(email => email.isRead)
+        if (criteria.isRead) emails = emails.filter(email => email.isStared)
+
+        return emails
+    })
+
+}
