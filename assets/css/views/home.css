@@ -1,0 +1,26 @@
+
+
+.home{
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 0vh 81vh 8.6vh;
+
+    grid-template-areas:
+        "header"
+        "main"
+        "footer";
+
+}
+
+.main-features{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(153, 153, 153);
+    margin: 15px;
+    height: 15rem;
+    width: 15rem;
+    border-radius: 5px;
+}
+
