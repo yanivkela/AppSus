@@ -2,6 +2,7 @@ const { Route, Routes } = ReactRouterDOM
 const Router = ReactRouterDOM.HashRouter
 
 import { AppHeader } from "./cmps/app-header.jsx"
+import {AppFooter} from "./cmps/app-footer.jsx"
 import { About } from "./views/about.jsx"
 import { Home } from "./views/home.jsx"
 import { MailIndex } from "./apps/mail/views/mail-index.jsx"
@@ -22,6 +23,8 @@ export function App() {
                 <Route path="/note" element={<NoteIndex />} />
             </Routes>
             
+            <AppFooter/>
+
         </section>
     </Router>
 }

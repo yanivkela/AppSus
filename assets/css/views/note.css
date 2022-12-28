@@ -1,15 +1,6 @@
 
 
-.note-index{
-    background-color:aqua;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 0vh 81vh 8.6vh;
-    height: 100%;
-    grid-template-areas:
-        "header"
-        "main"
-        "footer";
-
+.note-main{
+    background-color: aqua;
 }
 
