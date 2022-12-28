@@ -20,13 +20,13 @@
 }
 
 .mail-preview .email-display {
-    text-align: left;
+    /* text-align: left; */
     flex-grow: 1;
     width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    flex: 1 1 auto;
+    flex: 1 1 0;
 }
 
 .mail-preview .email-display span {
@@ -40,7 +40,50 @@
 
 .mail-preview .date{
     display: flex;
-    justify-self: flex-end;
     justify-content: flex-end;
     width: 100px;
+    padding-right: 16px;
 }
+
+.mail-preview .actions {
+    position: relative;
+    display: none;
+    width: 100px;
+    padding-right: 16px;
+    justify-items: center;
+    justify-content: space-around;
+    margin:-10px;
+}
+
+.mail-preview:hover .actions {
+    display: flex;
+    
+}
+
+.mail-preview .actions .preview-icon-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin:-10px;
+}
+
+.mail-preview .actions .preview-icon-container:hover {
+    z-index: 1;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin:-10px;
+    background-color: lightgray;
+    border-radius: 50%;
+}
+
+.mail-preview:hover .date {
+    display: none;
+}
+
