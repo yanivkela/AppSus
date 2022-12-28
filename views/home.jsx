@@ -1,4 +1,3 @@
-import {AppFooter} from "./cmps/app-footer.jsx"
 
 export function Home() {
 

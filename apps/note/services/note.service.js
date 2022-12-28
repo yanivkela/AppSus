@@ -18,7 +18,7 @@ function setNewNote(){
         type: "note-txt", 
         isPinned: true, 
         info: { 
-            txt: "Fullstack Me Baby!" 
+            txt: "Fullstack Me Baby! ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrffffffffffffffffffffffffffffffffffffffffffffff" 
         } 
     }
     storageService.post('notes', newNote)
