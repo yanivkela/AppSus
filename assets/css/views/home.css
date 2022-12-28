@@ -1,18 +1,4 @@
 
-
-.home{
-
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 0vh 81vh 8.6vh;
-
-    grid-template-areas:
-        "header"
-        "main"
-        "footer";
-
-}
-
 .main-features{
     display: flex;
     justify-content: center;

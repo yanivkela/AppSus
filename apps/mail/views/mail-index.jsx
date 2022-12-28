@@ -12,7 +12,7 @@ export function MailIndex() {
         mailService.query(criteria).then(setMatchingEmails)
     }, [criteria])
 
-    return <section className="mail-index">
+    return <section className="main mail-index">
         <MailList emails={matchingEmails} />
     </section>
 }

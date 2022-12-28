@@ -1,9 +1,10 @@
+import {AppFooter} from "./cmps/app-footer.jsx"
 
 export function Home() {
 
     return <section className="home">
 
-        <div className="main">
+        <div className="main justify-center align-item">
             <div className="main-features">
                 <h2>E-mail</h2>
             </div>
@@ -14,8 +15,6 @@ export function Home() {
 
         </div>
 
-        <div className="footer">
-            dd
-        </div>
+
     </section>
 }
