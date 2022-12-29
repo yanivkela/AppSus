@@ -9,6 +9,10 @@
     margin: 15px;
 }
 
+.details-icon {
+    pointer-events: none;
+}
+
 .details-icon-container:first-child {
     margin-right: 10px;
 }

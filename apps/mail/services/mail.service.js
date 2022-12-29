@@ -128,7 +128,7 @@ function query(criteria = defaultCriteria) {
                 emails = emails.filter(email => email.to === loggedInUser.email && !email.isTrash)
                 break
             case 'sent':
-                emails = emails.filter(email => email.from === loggedInUser.email && !email.isDraft)
+                emails = emails.filter(email => email.from === loggedInUser.email && !email.isDraft && !email.isTrash)
                 break
             case 'trash':
                 emails = emails.filter(email => email.isTrash)

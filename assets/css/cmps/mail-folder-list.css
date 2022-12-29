@@ -1,0 +1,33 @@
+.mail-folder-list {
+    font-size: 0.875rem;
+}
+
+.mail-folder-list table {
+    margin-right: 15px;
+
+
+}
+
+.folder {
+    height:35px;
+}
+
+.folder:hover {
+    background-color: lightgray;
+}
+
+.folder-list-icon {
+    width: 50px;
+    text-align: center;
+    padding-left: 10px;
+}
+
+.folder-list-item {
+    width: 80px;
+}
+
+.folder-list-number {
+    width: 60px;
+    text-align: right;
+    padding-right: 10px;
+}

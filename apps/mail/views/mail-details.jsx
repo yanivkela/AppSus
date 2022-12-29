@@ -1,23 +1,27 @@
 const { useParams, useNavigate} = ReactRouterDOM
 const { useState, useEffect} =React
 
-import { mailService } from "../services/mail.service.js"
 import { utilService } from "../../../services/util.service.js"
+import { mailService } from '../services/mail.service.js'
 
-export function MailDetails() {
-    const [email, setEmail] = useState(null)
-    const {emailId} = useParams()
+export function MailDetails({email, onDeleteMail, onToggleRead}) {
     const navigate = useNavigate()
-    useEffect(() => {
-        mailService.get(emailId).then(setEmail)
-    } ,[])
+    function onDeleteMailDetails(ev, mailToDelete) {
+        onDeleteMail(ev, mailToDelete)
+        navigate(-1)
+    }
+
+    function onToggleReadDetails(ev, mailToToggle) {
+        onToggleRead(ev, mailToToggle)
+        navigate(-1)
+    }
 
     if (!email) return <div>Loading...</div>
     return <section className="mail-details">
         <div className="actions">
-            <div className="details-icon-container"><object data="../../../assets/icons/left-arrow.svg" height="15" width="15"></object></div>
-            <div className="details-icon-container"><object data="../../../assets/icons/trash.svg" height="15" width="15"></object></div>
-            <div className="details-icon-container"><object className="mark-unread-icon" data="../../../assets/icons/closed-letter.svg" height="20" width="20"></object></div>
+            <div className="details-icon-container" onClick={() => navigate(-1)}><object className="details-icon" data="../../../assets/icons/left-arrow.svg" height="15" width="15"></object></div>
+            <div className="details-icon-container" onClick={(ev) => onDeleteMailDetails(ev, email)}><object className="details-icon" data="../../../assets/icons/trash.svg" height="15" width="15"></object></div>
+            <div className="details-icon-container" onClick={(ev) => onToggleReadDetails(ev,email)}><object className="details-icon mark-unread-icon" data="../../../assets/icons/closed-letter.svg" height="20" width="20"></object></div>
         </div>
         <h1 className="subject">{email.subject}</h1>
         <div className="info">
