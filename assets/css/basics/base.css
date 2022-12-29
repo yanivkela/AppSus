@@ -41,7 +41,6 @@ img {
 }
 
 .main {
-    display: flex;
     height: 100%;
     grid-area: main;
     background-color: rgb(240, 240, 240);
@@ -52,27 +51,3 @@ img {
 }
 
 
-.note-list {
-    margin-top: 50px;
-    display: flexbox;
-    height: 70%;
-    width: 100%;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-}
-
-.note-preview {
-    position: static;
-    float: left;
-    box-sizing: content-box;
-    background-color: white;
-    border: 1px solid;
-    margin-left: 5px;
-    width: 15rem;
-}
-
-.note-contant {
-    background-color: aqua;
-    word-break:break-all;
-    flex: 1;
-}

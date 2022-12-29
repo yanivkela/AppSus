@@ -1,6 +1,28 @@
+.note-main {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10vh 80vh;
+
+    grid-auto-flow: dense;
+    /* grid-auto-rows: minmax(220px, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
 
 
-.note-main{
-    background-color: aqua;
+    grid-template-areas:
+        "add-new-note"
+        "main";
+
+
+
+
+
 }
 
+
+.add-note-div {
+    display: flex;
+    grid-area: add-new-note;
+    background-color: aqua;
+    height: 3.125rem;
+    justify-content: center;
+}

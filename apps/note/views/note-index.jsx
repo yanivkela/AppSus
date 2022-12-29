@@ -6,6 +6,7 @@ import { storageService } from "../../../services/util.service.js"
 
 import { NoteList } from "../cmps/note-list.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
+import { func } from "prop-types"
 
 
 
@@ -14,11 +15,14 @@ import { AddNote } from "../cmps/add-note.jsx"
 export function NoteIndex() {
 
     const [notes, setnotes] = useState([])
+    const [newNote, setNewNote] = useState(null)
+
 
 
     useEffect(() => {
         loadNotes()
-    }, [])
+    }, [onNewNote, onDeleteNote])
+
 
     function loadNotes() {
 
@@ -28,12 +32,28 @@ export function NoteIndex() {
 
     }
 
+
+    function onNewNote(note) {
+        noteService.addtNewNote(note)
+    }
+
+    function onDeleteNote(id) {
+        noteService.deleteNote(id)
+    }
+
+    function onDuplicatNote(note) {
+        onNewNote(note.info.txt)
+    }
+
     return <section>
 
-        <div className="main" >
+        <div className="main note-main" >
 
-            <AddNote/>
-            <NoteList notes={notes} />
+            <div className="add-note-div">
+                <AddNote onNewNote={onNewNote} />
+
+            </div>
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />
 
         </div>
 
