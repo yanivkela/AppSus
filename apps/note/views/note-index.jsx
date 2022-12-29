@@ -14,8 +14,8 @@ import { func } from "prop-types"
 
 export function NoteIndex() {
 
-    const [notes, setnotes] = useState([])
-    const [newNote, setNewNote] = useState(null)
+    const [notes, setNotes] = useState([])
+    const [isBig, setIsBig] = useState(null)
 
 
 
@@ -27,7 +27,7 @@ export function NoteIndex() {
     function loadNotes() {
 
         noteService.getNotes().then(notes => {
-            setnotes(notes)
+            setNotes(notes)
         })
 
     }
@@ -35,47 +35,59 @@ export function NoteIndex() {
 
     function onNewNote(note) {
         noteService.addtNewNote(note).then(note => {
-            setnotes(prevnotes => {
-                return  [note,...prevnotes]
+            setNotes(prevnotes => {
+                return [note, ...prevnotes]
             })
-            
+
         })
     }
 
     function onDeleteNote(id) {
         noteService.deleteNote(id).then(() => {
             const updatedNotes = notes.filter(note => note.id !== id)
-            setnotes(updatedNotes)
+            setNotes(updatedNotes)
         })
     }
 
     function onDuplicatNote(note) {
         noteService.addtNewNote(note.info.txt).then(note => {
-            setnotes(prevnotes => {
-                return  [note,...prevnotes]
+            setNotes(prevnotes => {
+                return [note, ...prevnotes]
             })
-            
+
         })
     }
 
-    function onPiningNote(noteId){
+    function onPiningNote(noteId) {
         // const note = getNote(noteId)
         console.log(noteId)
+    }
+
+    let addNoteClass = 'add-note-div'
+
+    function onClickDiv() {
+        // if (isBig) {
+        //     addNoteClass = 'add-note-div'
+        // } else {
+        //     addNoteClass = 'add-note-div-big'
+        // }
+        setIsBig(!isBig)
+        console.log(isBig)
     }
 
     return <section>
 
         <div className="main note-main" >
 
-            <div className="add-note-div">
-                <AddNote onNewNote={onNewNote} />
-            </div>
-            {/* {piningNote && <piningNote/>} */}
-            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} onPiningNote={onPiningNote} />
-
+            <div className={(isBig)? 'add-note-div-big': 'add-note-div'} onClick={onClickDiv}>
+            <AddNote onNewNote={onNewNote} />
         </div>
+        {/* {piningNote && <piningNote/>} */}
+        <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} onPiningNote={onPiningNote} />
 
-    </section>
+    </div>
+
+    </section >
 
 
 }
