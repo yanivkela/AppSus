@@ -1,6 +1,7 @@
 
 export function MailFolderList({setFolder, Folder}) {
     return <section className="mail-folder-list">
+        
         <table>
             <tbody>
                 <tr className={`folder ${Folder === 'inbox' && 'active'}`}>

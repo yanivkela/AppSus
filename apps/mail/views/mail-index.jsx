@@ -1,6 +1,7 @@
 const { useState, useEffect} = React
 const { useNavigate} = ReactRouterDOM
 
+import { MailFolderList } from "../cmps/mail-folder-list.jsx"
 import { MailList } from "../cmps/mail-list.jsx"
 
 import { mailService } from "../services/mail.service.js"
@@ -48,7 +49,12 @@ export function MailIndex() {
     }
 
     return <section className="main mail-index">
+        <div className="side-bar">
+        <MailFolderList />
+        </div>
+        <div className="main-content">
         <MailList emails={matchingEmails} onGoToMail={onGoToMail} onDeleteMail={onDeleteMail} onToggleRead={onToggleRead} />
+        </div>
     </section>
 }
 

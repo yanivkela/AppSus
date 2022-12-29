@@ -1,3 +1,16 @@
 .mail-list {
+    /* display: block; */
+    position: relative;
     background-color: white;
+    width: 100%;
+}
+
+.mail-list table {
+    display: block;
+    /* width: 100%; */
+}
+.mail-list tbody {
+    display: block;
+    position: relative;
+    width: 100% ;
 }
