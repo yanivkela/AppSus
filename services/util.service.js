@@ -7,7 +7,8 @@ export const utilService = {
     getDayName,
     getMonthName,
     saveToLocalStorage,
-    loadFromLocalStorage
+    loadFromLocalStorage,
+    getDateString
 }
 
 function makeId(length = 6) {
@@ -70,4 +71,13 @@ function saveToLocalStorage(key,value) {
 function loadFromLocalStorage(key) {
     const value = localStorage.getItem(key)
     return JSON.parse(value)
+}
+
+function getDateString(timestamp) {
+    const date = new Date(timestamp)
+    const dayInMs = 1000*60*60*24
+    const currentDate = Date.now()
+    const daysAgo = parseInt((currentDate - timestamp)/dayInMs)
+
+    return `${date.getDate()} ${getMonthName(date)} ${date.getFullYear()}, ${padNum(date.getHours())}:${padNum(date.getMinutes())} (${daysAgo} days ago)`
 }

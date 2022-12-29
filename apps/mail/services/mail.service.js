@@ -17,8 +17,10 @@ const loggedInUser = {
 export const mailService = {
     query,
     defaultCriteria,
+    loggedInUser,
     save,
-    remove
+    remove,
+    get
 }
 
 const mockupEmails = [
@@ -134,10 +136,10 @@ function query(criteria = defaultCriteria) {
             case 'draft':
                 emails = emails.filter(email => email.isDraft)
         }
-        emails = emails.filter(email => email.subject.includes(criteria.txt) || 
-        email.body.includes(criteria.txt) || 
-        email.to.includes(criteria.txt) ||
-        email.from.includes(criteria.txt))
+        emails = emails.filter(email => email.subject.toLowerCase().includes(criteria.txt.toLowerCase()) || 
+        email.body.toLowerCase().includes(criteria.txt.toLowerCase()) || 
+        email.to.toLowerCase().includes(criteria.txt.toLowerCase()) ||
+        email.from.toLowerCase().includes(criteria.txt.toLowerCase()))
 
         if (criteria.isRead) emails = emails.filter(email => email.isRead)
         if (criteria.isRead) emails = emails.filter(email => email.isStared)
@@ -154,4 +156,8 @@ function save(email) {
 
 function remove(emailId) {
     return storageService.remove(EMAIL_KEY, emailId)
+}
+
+function get(emailId) {
+    return storageService.get(EMAIL_KEY, emailId)
 }

@@ -1,0 +1,90 @@
+.mail-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.mail-details .actions {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+}
+
+.details-icon-container:first-child {
+    margin-right: 10px;
+}
+
+.details-icon-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+}
+
+.details-icon-container:hover {
+
+    background-color: #a4a4a446;
+    border-radius: 50%;
+}
+
+.mark-unread-icon {
+    position: relative;
+    transform: translateY(-3px);
+}
+
+.mail-details .subject {
+    margin-left: 70px;
+    font-size: 1.375rem;
+    font-weight: 400;
+}
+
+.info {
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    align-items: center;
+    margin:20px 0 ;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info .from-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: blueviolet;
+    border-radius: 50%;
+    font-size: 30px;
+    color: white;
+    margin:0 15px;
+}
+
+
+
+.from-to .from-name {
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.from-to .to-name {
+    font-size: 0.75rem;
+    color: #5e5e5e;
+}
+
+.mail-info .date {
+    font-size: 0.75rem;
+    color: #5e5e5e;
+}
+
+.mail-body {
+    font-size: 0.75rem;
+    margin-left: 70px;
+    width:75%;
+}
