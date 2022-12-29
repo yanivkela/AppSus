@@ -1,7 +1,6 @@
 .mail-preview {
     position: relative;
     display: flex;
-    width: 85vw;
     justify-content:flex-start ;
     align-items: center;
     padding: 10px 0;
