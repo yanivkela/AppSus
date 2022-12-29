@@ -1,3 +1,96 @@
+<<<<<<< HEAD
+.note-list {
+    position: relative;
+    display: grid;
+    align-items: flex-start;
+    justify-items: center;
+    grid-auto-rows: minmax(auto, 1fr);
+    grid-auto-flow: row;
+    grid-template-columns: repeat(4, 1fr);
+    overflow-y: scroll;
+    height: 70%;
+}
+
+.notes-menu {
+    display: block;
+    position: fixed;
+    right: 5px;
+    width: 3rem;
+    height: 100%;
+    background-color: rgb(168, 113, 41);
+    border: 1px solid;
+    z-index: 6;
+    text-overflow: ellipsis;
+}
+
+.adition-info {
+    display: none;
+    position: fixed;
+    right: 0px;
+    width: 8rem;
+    height: 100%;
+    background-color: antiquewhite;
+    justify-content: end;
+    z-index: 4;
+}
+.notes-menu:hover{
+    width: 7rem;
+}
+
+.notes-menu:hover+.adition-info {
+    display: block;
+    background-color: antiquewhite;
+    position: fixed;
+}
+
+.note-preview {
+    display: flex;
+    flex-direction: column;
+    box-sizing: content-box;
+    background-color: white;
+    border: 1px solid;
+    opacity: 1;
+    z-index: 2;
+}
+
+
+.note-contant {
+    box-sizing: content-box;
+    width: 15rem;
+    border: 1px solid;
+    min-height: 5rem;
+    word-break: break-all;
+}
+
+.note-preview:hover {
+    opacity: 1;
+    z-index: 0;
+    background-color: rgb(149, 179, 179)
+}
+
+.preview-icon {
+    pointer-events: none;
+
+}
+
+.preview-icon:hover {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    margin: -10px;
+    background-color: #a4a4a446;
+    border-radius: 50%;
+}
+
+.bottom-menu-note {
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+=======
 /* 
 
 
@@ -5,3 +98,4 @@
     background-color: aqua;
     height: 100%;
 } */
+>>>>>>> acbeab71b24a09839037e4669d5ffae2a8827939
