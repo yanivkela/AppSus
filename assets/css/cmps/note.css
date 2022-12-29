@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 .note-list {
     position: relative;
     display: grid;
@@ -90,12 +90,3 @@
     justify-content: center;
     z-index: 1;
 }
-=======
-/* 
-
-
-.note-list{
-    background-color: aqua;
-    height: 100%;
-} */
->>>>>>> acbeab71b24a09839037e4669d5ffae2a8827939
