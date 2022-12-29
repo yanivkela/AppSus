@@ -4,25 +4,17 @@
     grid-template-rows: 10vh 80vh;
 
     grid-auto-flow: dense;
-    /* grid-auto-rows: minmax(220px, 1fr);
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); */
-
-
-    grid-template-areas:
-        "add-new-note"
-        "main";
-
-
-
-
-
+    
 }
-
 
 .add-note-div {
     display: flex;
-    grid-area: add-new-note;
     background-color: aqua;
-    height: 3.125rem;
+    height: 3rem;
     justify-content: center;
+}
+
+.add-note-div-big{
+    background-color: rgb(129, 129, 129);
+
 }

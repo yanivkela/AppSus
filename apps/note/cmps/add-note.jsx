@@ -27,7 +27,7 @@ export function AddNote({ onNewNote }) {
         ev.preventDefault()
         onNewNote(note.value)
     }
-
+    
     return <div className='add-note'>
         <form onSubmit={onSetNewNote}>
             <input type="text"
