@@ -21,7 +21,7 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [onNewNote, onDeleteNote])
+    }, [])
 
 
     function loadNotes() {
@@ -34,15 +34,33 @@ export function NoteIndex() {
 
 
     function onNewNote(note) {
-        noteService.addtNewNote(note)
+        noteService.addtNewNote(note).then(note => {
+            setnotes(prevnotes => {
+                return  [note,...prevnotes]
+            })
+            
+        })
     }
 
     function onDeleteNote(id) {
-        noteService.deleteNote(id)
+        noteService.deleteNote(id).then(() => {
+            const updatedNotes = notes.filter(note => note.id !== id)
+            setnotes(updatedNotes)
+        })
     }
 
     function onDuplicatNote(note) {
-        onNewNote(note.info.txt)
+        noteService.addtNewNote(note.info.txt).then(note => {
+            setnotes(prevnotes => {
+                return  [note,...prevnotes]
+            })
+            
+        })
+    }
+
+    function onPiningNote(noteId){
+        // const note = getNote(noteId)
+        console.log(noteId)
     }
 
     return <section>
@@ -51,9 +69,9 @@ export function NoteIndex() {
 
             <div className="add-note-div">
                 <AddNote onNewNote={onNewNote} />
-
             </div>
-            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />
+            {/* {piningNote && <piningNote/>} */}
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} onPiningNote={onPiningNote} />
 
         </div>
 

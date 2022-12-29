@@ -9,9 +9,7 @@ export const noteService = {
 
 
 function deleteNote(id){
-    storageService.remove('notes', id)
-
-
+    return storageService.remove('notes', id)
 }
 function getNotes(){
     return storageService.query('notes').then()
@@ -25,5 +23,9 @@ function addtNewNote(txt){
             txt 
         } 
     }
-    storageService.post('notes', newNote)
+    return storageService.post('notes', newNote)
+}
+
+function getNote(noteId){
+    return storageService.get('notes', noteId)
 }

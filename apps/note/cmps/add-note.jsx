@@ -25,13 +25,13 @@ export function AddNote({ onNewNote }) {
 
     function onSetNewNote(ev){
         ev.preventDefault()
-        onNewNote(nNote.value)
+        onNewNote(note.value)
     }
 
     return <div className='add-note'>
         <form onSubmit={onSetNewNote}>
             <input type="text"
-                id="nNote"
+                id="note"
                 name="txt"
                 placeholder="Rite a note"
             />
