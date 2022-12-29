@@ -1,16 +1,25 @@
 const { useState, useEffect} = React
+const { useNavigate} = ReactRouterDOM
 
 import { MailList } from "../cmps/mail-list.jsx"
 
 import { mailService } from "../services/mail.service.js"
 
 export function MailIndex() {
-    const [criteria, setCriteria] = useState(mailService.defaultCriteria)
+    const [criteria, setCriteria] = useState({...mailService.defaultCriteria,status: 'inbox',txt:''})
     const [matchingEmails, setMatchingEmails] = useState([])
+    const navigate = useNavigate()
 
     useEffect(() => {
         mailService.query(criteria).then(setMatchingEmails)
     }, [criteria])
+
+    function onGoToMail(mail) {
+        mail.isRead = true
+        mailService.save(mail).then(() => {
+            navigate(`/mail/${mail.id}`)
+        })
+    }
 
     function onDeleteMail(ev,mailToDelete) {
         ev.stopPropagation()
@@ -39,7 +48,7 @@ export function MailIndex() {
     }
 
     return <section className="main mail-index">
-        <MailList emails={matchingEmails} onDeleteMail={onDeleteMail} onToggleRead={onToggleRead} />
+        <MailList emails={matchingEmails} onGoToMail={onGoToMail} onDeleteMail={onDeleteMail} onToggleRead={onToggleRead} />
     </section>
 }
 
