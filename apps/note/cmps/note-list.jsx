@@ -12,15 +12,6 @@ export function NoteList({ notes, onDeleteNote, onDuplicatNote }) {
                 return <NotePreview key={note.id} note={note} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />
             })
         }
-        <div className='notes-menu'>
-            fffאאאאאאאאאאאאאאאאאאאאאאא
-        </div>
-        {/* <div className='adition-info'>
-            dfdsf
-        </div> */}
-
+        
     </div>
-
-
-
 }

@@ -1,20 +1,23 @@
 .note-main {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 10vh 80vh;
-
-    grid-auto-flow: dense;
-    
+    position: relative;
+    overflow:auto;
 }
 
-.add-note-div {
+.add-note {
+    position: relative;
     display: flex;
-    background-color: aqua;
-    height: 3rem;
-    justify-content: center;
+    margin: auto;
+    top:10px;
+    width: 65%;
+    height:auto;
+    background-color: antiquewhite;
 }
 
-.add-note-div-big{
-    background-color: rgb(129, 129, 129);
-
+.note-input {
+    margin: auto;
+   width: 80%;
+   height: 50px;
+   font-size: 20px;
+   border: none;
 }
+
