@@ -50,4 +50,9 @@ img {
     grid-area: footer;
 }
 
+.myCanvas{
+    border: 1px solid;
+    background-color: white;
+}
+
 

@@ -6,41 +6,61 @@ import { storageService } from "../../../services/util.service.js"
 
 import { NoteList } from "../cmps/note-list.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
-import { func } from "prop-types"
-
-
+import { AddList } from "../cmps/add-list.jsx"
+import { AddVideo } from "../cmps/add-video.jsx"
 
 
 
 export function NoteIndex() {
 
+    const [note, setNote] = useState({})
     const [notes, setNotes] = useState([])
-    const [isBig, setIsBig] = useState(null)
+    const [Type, setype] = useState('note')
 
 
+    useEffect(() => {
+        newNote()
+    }, [])
 
     useEffect(() => {
         loadNotes()
     }, [])
 
 
-    function loadNotes() {
+    function editNote(info, type, url = "") {
+        const newNote = note
+        newNote.info = info
+        note['type'] = type
+        note['url'] = url
+        console.log(type)
+        onSaveNote(newNote)
+    }
 
+    function newNote() {
+        const newNote = noteService.addtNewNote()
+        setNote(newNote)
+    }
+
+
+    function loadNotes() {
         noteService.getNotes().then(notes => {
             setNotes(notes)
         })
 
     }
 
+    function onSaveNote(note) {
+        new
+            noteService.saveNote(note).then(note => {
+                setNotes(prevnotes => {
+                    return [note, ...prevnotes]
+                })
 
-    function onNewNote(note) {
-        noteService.addtNewNote(note).then(note => {
-            setNotes(prevnotes => {
-                return [note, ...prevnotes]
             })
 
-        })
     }
+
+
 
     function onDeleteNote(id) {
         noteService.deleteNote(id).then(() => {
@@ -50,42 +70,61 @@ export function NoteIndex() {
     }
 
     function onDuplicatNote(note) {
-        noteService.addtNewNote(note.info.txt).then(note => {
-            setNotes(prevnotes => {
-                return [note, ...prevnotes]
-            })
+        const newNote = note
+        newNote.info = note.info
+        onSaveNote(newNote)
 
-        })
+        // noteService.addtNewNote(note.info.txt).then(note => {
+        //     setNotes(prevnotes => {
+        //         return [note, ...prevnotes]
+        //     })
+
+        // })
     }
 
-    function onPiningNote(noteId) {
-        // const note = getNote(noteId)
-        console.log(noteId)
+    function newList() {
+        const list = noteService.addtNewNote(null, 'list')
+
+        setList(list)
     }
 
-    let addNoteClass = 'add-note-div'
-
-    function onClickDiv() {
-        // if (isBig) {
-        //     addNoteClass = 'add-note-div'
-        // } else {
-        //     addNoteClass = 'add-note-div-big'
-        // }
-        setIsBig(!isBig)
-        console.log(isBig)
+    function onSetType(type) {
+        setype(type)
     }
+
+    function createList(toDo) {
+        note.toDo = toDo
+        note['type'] = 'list'
+        onSaveNote(note)
+    }
+
 
     return <section>
 
+
+
         <div className="main note-main" >
 
-            <div className={(isBig)? 'add-note-div-big': 'add-note-div'} onClick={onClickDiv}>
-            <AddNote onNewNote={onNewNote} />
-        </div>
-        {/* {piningNote && <piningNote/>} */}
-        <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} onPiningNote={onPiningNote} />
+            <div className='add-note'>
+                <div className="preview-icon-container" onClick={() => onSetType('video')}><object className="preview-icon" data="../../../assets/icons/video-svgrepo-com.svg" width="25" height="15"></object></div>
 
-    </div>
+                <div className="preview-icon-container" onClick={() => onSetType('list')}><object className="preview-icon" data="../../../assets/icons/list-task-svgrepo-com.svg" width="25" height="15"></object></div>
+                {/* <input type="file" className="file-input btn" name="image" onChange={(event) =>{noteService.onImgInput(event);onSetType('photo')}} /> */}
+                <div className="preview-icon-container" onClick={() => onSetType('note')}><object className="preview-icon" data="../../../assets/icons/note-text-line-svgrepo-com.svg" width="25" height="15"></object></div>
+
+                {Type === 'note' && <AddNote info={note['info']} editNote={editNote} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />}
+                {Type === 'list' && <AddList toDo={note['toDo']} createList={createList} />}
+                {Type === 'video' && <AddVideo info={note['info']} url={note['url']} editNote={editNote} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />}
+
+                {/* onNewNote={onNewNote} */}
+            </div>
+
+
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />
+
+
+
+        </div>
 
     </section >
 
