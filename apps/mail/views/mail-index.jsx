@@ -68,6 +68,7 @@ export function MailIndex() {
     mailService.save(mail).then(() => {
       mailService.query(criteria).then(setMatchingEmails)
       searchParams.delete('compose')
+      setSearchParams(searchParams)
       setIsCompose(false)
     })
   }
