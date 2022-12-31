@@ -8,6 +8,7 @@ import { NoteList } from "../cmps/note-list.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
 import { AddList } from "../cmps/add-list.jsx"
 import { AddVideo } from "../cmps/add-video.jsx"
+import { AddPhotoTry } from "../cmps/add-photo-try.jsx"
 
 
 
@@ -104,7 +105,7 @@ export function NoteIndex() {
 
 
         <div className="main note-main" >
-
+            <AddPhotoTry />
             <div className='add-note'>
                 <div className="preview-icon-container" onClick={() => onSetType('video')}><object className="preview-icon" data="../../../assets/icons/video-svgrepo-com.svg" width="25" height="15"></object></div>
 
