@@ -2,7 +2,6 @@ const { useState, useEffect } = React
 
 
 import { noteService } from "../services/note.service.js"
-import { storageService } from "../../../services/util.service.js"
 
 import { NoteList } from "../cmps/note-list.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
@@ -17,7 +16,6 @@ export function NoteIndex() {
     const [notes, setNotes] = useState([])
     const [Type, setype] = useState('note')
     const [color, setColor] = useState('')
-    // const [picture, setPicture] = useState(null)
 
 
 
@@ -26,9 +24,6 @@ export function NoteIndex() {
         newNote()
     }, [])
 
-    // useEffect(() => {
-    //     setPicture()
-    // }, [])
 
     useEffect(() => {
         loadNotes()
@@ -81,18 +76,6 @@ export function NoteIndex() {
         newNote.info = note.info
         onSaveNote(newNote)
 
-        // noteService.addtNewNote(note.info.txt).then(note => {
-        //     setNotes(prevnotes => {
-        //         return [note, ...prevnotes]
-        //     })
-
-        // })
-    }
-
-    function newList() {
-        const list = noteService.addtNewNote(null, 'list')
-
-        setList(list)
     }
 
     function onSetType(type) {
