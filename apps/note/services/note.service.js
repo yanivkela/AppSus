@@ -34,6 +34,7 @@ function addtNewNote() {
         isPinned: false,
         url: "",
         color: "red",
+        picture:'',
         info: {
             title: "",
             txt: ""

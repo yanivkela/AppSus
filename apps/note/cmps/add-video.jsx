@@ -7,14 +7,22 @@ const { useState, useEffect } = React
 
 export function AddVideo({ info, url, editNote }) {
 
+    const [Vidoe, displayVidoe] = useState(null)
 
 
     function onSetNewNote(ev) {
         ev.preventDefault()
         info['title'] = title.value
         info['txt'] = txt.value
-        url = getId(userUrl.value)
-        editNote(info, 'video', url)
+        const embed = getId(userUrl.value)
+        editNote(info, 'video', embed)
+    }
+
+    function handleUpload(){
+        const embed = getId(userUrl.value)
+        const em = `https://www.youtube.com/embed/${embed}`
+
+        displayVidoe(em)
     }
 
     function getId(url) {
@@ -24,11 +32,17 @@ export function AddVideo({ info, url, editNote }) {
     }
 
     return <form onSubmit={onSetNewNote} >
+        {Vidoe && <div className="video-area">
+                    <iframe width="300" height="315"
+                        src={Vidoe}>
+                    </iframe>
+                </div>}
         <input type="textarea"
             className="note-input"
             id="userUrl"
             name="userUrl"
-            placeholder="video url"
+            placeholder="youtube url"
+            onChange={handleUpload}
 
         />
         <input type="textarea"

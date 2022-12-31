@@ -1,23 +1,32 @@
 .note-main {
     position: relative;
-    overflow:auto;
+    overflow: auto;
+    background-color: white;
 }
 
 .add-note {
     position: relative;
     display: flex;
     margin: auto;
-    top:10px;
+    top: 10px;
     width: 65%;
-    height:auto;
-    background-color: antiquewhite;
+    height: auto;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 15px;
+    box-shadow: 0px 4px 21px 2px lightgray;
 }
 
 .note-input {
     margin: auto;
-   width: 80%;
-   height: 50px;
-   font-size: 20px;
-   border: none;
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    border: none;
 }
 
+.displayPhoto{
+    height: 450px;
+    width: 450px;
+    background-color: aqua;
+}

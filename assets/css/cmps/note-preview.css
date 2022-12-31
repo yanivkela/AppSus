@@ -7,14 +7,16 @@
     margin: 10px 10px;
 }
 
-.red{
+.red {
     background-color: rgba(235, 15, 15, 0.699);
 }
-.green{
+
+.green {
     background-color: rgba(42, 182, 42, 0.699);
 }
-.blue{
-    background-color:rgba(26, 26, 209, 0.877);
+
+.blue {
+    background-color: rgba(26, 26, 209, 0.877);
 }
 
 .note-preview:hover .bottom-menu-note {
@@ -23,7 +25,8 @@
 
 .preview-icon {
     pointer-events: none;
-
+    width:25px;
+    height:15px;
 }
 
 .preview-icon:hover {
@@ -47,7 +50,7 @@
     padding-bottom: 1.5rem;
 }
 
-.note-footer{
+.note-footer {
     position: relative;
 }
 
@@ -59,16 +62,13 @@
     justify-content: center;
 }
 
-.bottom-menu-note:hover .color choice{
+.bottom-menu-note:hover .color choice {
     background-color: aqua;
 }
 
-.color choice{
+.color choice {
     display: block;
     position: fixed;
     border: 1px solid;
     top: 20px;
 }
-
-
-
