@@ -1,6 +1,7 @@
 const { useState } = React
 
 export function MailHeader({ criteria, setCriteria }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   function handleTextChange({ target }) {
     const { value } = target
     setCriteria((prevCritera) => ({ ...prevCritera, txt: value }))
@@ -34,6 +35,14 @@ export function MailHeader({ criteria, setCriteria }) {
             <option value="read">Read</option>
         </select>
       </div>
+
+      {/* <div className="menu-container">
+        <div className="menu-trigger" onClick={() => {setDropdownOpen(!dropdownOpen)}}>
+          <img src="assets/icons/menu.svg" alt="" />
+        </div>
+
+      </div> */}
+
     </section>
   )
 }
