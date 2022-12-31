@@ -5,8 +5,10 @@ const { useState, useEffect } = React
 export function NotePreview({ note, onDuplicatNote, onDeleteNote }) {
 
     const em = `https://www.youtube.com/embed/${note.url}`
+    
+    const divClass = `note-preview ${note.color}`
 
-    return <div className="note-preview red">
+    return <div className= {divClass}>
 
 
         <div className="note-contant">
@@ -16,11 +18,13 @@ export function NotePreview({ note, onDuplicatNote, onDeleteNote }) {
             </div>
 
             <div>
+
                 {note['type'] === 'video' && <div className="video-area">
                     <iframe width="300" height="315"
                         src={em}>
                     </iframe>
                 </div>}
+
 
             </div>
             <div>

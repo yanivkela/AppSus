@@ -8,7 +8,7 @@ import { NoteList } from "../cmps/note-list.jsx"
 import { AddNote } from "../cmps/add-note.jsx"
 import { AddList } from "../cmps/add-list.jsx"
 import { AddVideo } from "../cmps/add-video.jsx"
-
+import { AddColor } from "../cmps/add-color.jsx"
 
 
 export function NoteIndex() {
@@ -16,6 +16,8 @@ export function NoteIndex() {
     const [note, setNote] = useState({})
     const [notes, setNotes] = useState([])
     const [Type, setype] = useState('note')
+    const [color, setColor] = useState('')
+
 
 
     useEffect(() => {

@@ -33,6 +33,7 @@ function addtNewNote() {
         type: "",
         isPinned: false,
         url: "",
+        color: "red",
         info: {
             title: "",
             txt: ""
