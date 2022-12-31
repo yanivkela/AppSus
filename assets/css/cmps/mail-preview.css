@@ -68,6 +68,14 @@
 
 .mail-preview .actions .preview-icon {
     pointer-events: none;
+    overflow: visible;
+    width: 15px;
+    height: 15px;
+}
+
+.mail-preview .actions .preview-icon.letter {
+    width: 20px;
+    height: 15px;
 }
 
 .mail-preview .actions .preview-icon-container {
