@@ -14,12 +14,12 @@ export function MailHeader({ criteria, setCriteria }) {
   return (
     <section className='mail-header'>
         <div className="logo">
-            <img src="../../../assets/img/gmail.svg"/>
+            <img src="assets/img/gmail.svg"/>
             <span>Cmail</span>
         </div>
       <div className='search-box'>
         <div className="search-icon-container">
-            <object data="../../../assets/icons/search.svg" height="22" width="22"></object>
+            <img src="assets/icons/search.svg"/>
         </div>
         <input
           type='text'

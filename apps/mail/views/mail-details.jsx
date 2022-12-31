@@ -19,9 +19,9 @@ export function MailDetails({email, onDeleteMail, onToggleRead}) {
     if (!email) return <div>Loading...</div>
     return <section className="mail-details">
         <div className="actions">
-            <div className="details-icon-container" onClick={() => navigate(-1)}><object className="details-icon" data="../../../assets/icons/left-arrow.svg" height="15" width="15"></object></div>
-            <div className="details-icon-container" onClick={(ev) => onDeleteMailDetails(ev, email)}><object className="details-icon" data="../../../assets/icons/trash.svg" height="15" width="15"></object></div>
-            <div className="details-icon-container" onClick={(ev) => onToggleReadDetails(ev,email)}><object className="details-icon mark-unread-icon" data="../../../assets/icons/closed-letter.svg" height="20" width="20"></object></div>
+            <div className="details-icon-container" onClick={() => navigate(-1)}><img className="details-icon" src="assets/icons/left-arrow.svg"/></div>
+            <div className="details-icon-container" onClick={(ev) => onDeleteMailDetails(ev, email)}><img className="details-icon" src="assets/icons/trash.svg"/></div>
+            <div className="details-icon-container" onClick={(ev) => onToggleReadDetails(ev,email)}><img className="details-icon mark-unread-icon" src="assets/icons/closed-letter.svg" /></div>
         </div>
         <h1 className="subject">{email.subject}</h1>
         <div className="info">

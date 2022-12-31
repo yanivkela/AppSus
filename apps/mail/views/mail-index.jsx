@@ -118,11 +118,9 @@ export function MailIndex() {
               composeMail()
             }}
           >
-            <object
-              data='../../../assets/icons/pen.svg'
-              width='25'
-              height='25'
-            ></object>
+            <img
+              src='assets/icons/pen.svg'
+            />
             <div>Compose</div>
           </button>
           <MailFolderList foldersNumber={foldersNumber} folder={folder} />

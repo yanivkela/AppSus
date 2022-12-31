@@ -32,7 +32,14 @@
     border-radius: 50%;
 }
 
+.details-icon {
+    width: 15px;
+    height: 15px;
+}
+
 .mark-unread-icon {
+    width: 20px;
+    height: 20px;
     position: relative;
     transform: translateY(-3px);
 }

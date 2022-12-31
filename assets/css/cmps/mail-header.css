@@ -7,10 +7,17 @@
 .mail-header .logo {
     display: flex;
     align-items: center;
+    margin-left: 57px;
 }
 
 .mail-header .logo img {
     height: 25px;
+}
+
+.mail-header .logo span {
+    font-size: 22px;
+    margin-left: 10px;
+    color: #444746;
 }
 
 .mail-header .search-box {
@@ -18,7 +25,7 @@
     align-items: center;
     height: 50px;
     background-color: #eaf1fb;
-    margin-left: 232px;
+    margin-left: 75px;
     border-radius:10px;
     flex: 1 1 0;
     max-width: 722px;
@@ -39,6 +46,11 @@
     width: 40px;
     border-radius: 50%;
     
+}
+
+.mail-header .search-box .search-icon-container img {
+    width: 22px;
+    height: 22px;
 }
 
 .mail-header .search-box .search-icon-container:hover {

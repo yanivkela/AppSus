@@ -69,7 +69,7 @@ export function MailCompose({saveDraft, sendMail , onDeleteMail , setIsCompose})
         </div>
         <div className="actions">
             <button className="send-btn">Send</button>
-            <div onClick={onDeleteDraft} className="trash-icon-container"><object className="trash-icon" data="../../../assets/icons/trash.svg" height="15" width="15"></object></div>
+            <div onClick={onDeleteDraft} className="trash-icon-container"><img className="trash-icon" src="assets/icons/trash.svg" /></div>
         </div>
         </form>
     </section>
