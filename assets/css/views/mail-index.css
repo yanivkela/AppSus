@@ -1,13 +1,46 @@
 .mail-index {
     display: flex;
-    flex-direction: row;
-    width: 99%;
+    flex-direction: column;
+    width: 100%;
+    background-color: #f6f8fc;
+}
+
+.mail-index .main-mail-app {
+    display: flex;
+    flex-grow: 1;
 }
 
 .mail-index .main-content {
     /* display: block; */
-    /* flex-shrink: 1; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    border-radius:20px;
+    flex-shrink: 1;
     flex-grow:1;
     flex-basis:0;
     min-width: 0;
+}
+
+.compose-btn {
+    display: flex;
+    align-items: center;
+    height:56px;
+    width:135px;
+    margin:10px 0 20px 10px;
+    border-radius: 15px;
+    background-color: #c2e7ff;
+    border: 0;
+    font-weight: 600;
+    color: #001d35;
+    cursor: pointer;
+}
+
+.compose-btn:hover {
+    box-shadow: 0 1px 3px 0 rgba(60,64,67,0.302),0 4px 8px 3px rgba(60,64,67,0.149);
+}
+
+.compose-btn object{
+    margin-left:6px;
+    margin-right:11px;
 }

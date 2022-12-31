@@ -31,3 +31,5 @@
 @import './cmps/mail-preview.css';
 @import './cmps/mail-details.css';
 @import './cmps/mail-folder-list.css';
+@import './cmps/mail-compose.css';
+@import './cmps/mail-header.css';

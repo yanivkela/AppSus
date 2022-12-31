@@ -2,18 +2,30 @@
     font-size: 0.875rem;
 }
 
-.mail-folder-list table {
+.mail-folder-list .folders-container {
     margin-right: 15px;
 
 
 }
 
 .folder {
-    height:35px;
+    height:30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .folder:hover {
     background-color: lightgray;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+.folder.active {
+    background-color: #d3e3fd;
+    font-weight: bold;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
 }
 
 .folder-list-icon {
@@ -29,5 +41,5 @@
 .folder-list-number {
     width: 60px;
     text-align: right;
-    padding-right: 10px;
+    padding-right: 15px;
 }

@@ -14,13 +14,27 @@ const loggedInUser = {
     fullname: 'Mahatma Appsus'
 }
 
+const defaultEmail = {
+    id: null,
+    subject: '',
+    body: '',
+    isRead: true,
+    isDraft: true,
+    isStared: false,
+    from: 'user@appsus.com',
+    to: '',
+    createdAt: Date.now()
+}
+
 export const mailService = {
     query,
     defaultCriteria,
     loggedInUser,
+    defaultEmail,
     save,
     remove,
-    get
+    get,
+    getFoldersNumber
 }
 
 const mockupEmails = [
@@ -141,12 +155,24 @@ function query(criteria = defaultCriteria) {
         email.to.toLowerCase().includes(criteria.txt.toLowerCase()) ||
         email.from.toLowerCase().includes(criteria.txt.toLowerCase()))
 
-        if (criteria.isRead) emails = emails.filter(email => email.isRead)
-        if (criteria.isRead) emails = emails.filter(email => email.isStared)
-
-        return emails
+        if (criteria.isRead === 'read') emails = emails.filter(email => email.isRead)
+        else if (criteria.isRead === 'unread') emails = emails.filter(email => !email.isRead)
+        // if (criteria.isRead) emails = emails.filter(email => email.isStared)
+        if (emails.length && emails[0].sentAt) return emails.sort((a, b) => (a.sentAt - b.sentAt)*-1) 
+        else if (emails.length) return emails.sort((a, b) => (a.createdAt - b.createdAt)*-1) 
+        else return []
     })
+}
 
+function getFoldersNumber() {
+    return storageService.query(EMAIL_KEY).then(emails => {
+        const foldersNumber = {}
+        foldersNumber.inbox = emails.filter(email => email.to === loggedInUser.email && !email.isTrash && !email.isRead).length
+        foldersNumber.sent = emails.filter(email => email.from === loggedInUser.email && !email.isDraft && !email.isTrash && !email.isRead).length
+        foldersNumber.trash = emails.filter(email => email.isTrash && !email.isRead).length
+        foldersNumber.draft = emails.filter(email => email.isDraft).length
+        return foldersNumber
+    })
 }
 
 function save(email) {

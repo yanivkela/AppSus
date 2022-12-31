@@ -1,0 +1,67 @@
+.mail-header {
+    display: flex;
+    align-items: center;
+    height: 65px;
+}
+
+.mail-header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.mail-header .logo img {
+    height: 25px;
+}
+
+.mail-header .search-box {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    background-color: #eaf1fb;
+    margin-left: 232px;
+    border-radius:10px;
+    flex: 1 1 0;
+    max-width: 722px;
+    min-width: 200px;
+    transition: background-color .3s;
+}
+
+.mail-header .search-box:focus-within {
+    background-color: white;
+}
+
+.mail-header .search-box .search-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+}
+
+.mail-header .search-box .search-icon-container:hover {
+    background-color: #dde3ec;
+}
+
+.mail-header .search-box input {
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+    flex: 1 1 0;
+}
+
+.mail-header .search-box input:focus {
+    outline: 0;
+}
+
+.mail-header .search-box select {
+    margin-right: 10px;
+    background: transparent;
+    border: 0;
+}
+
+.mail-header .search-box select:focus {
+    outline: 0;
+}
