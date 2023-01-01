@@ -6,15 +6,13 @@ export function NotePreview({ note, onDuplicatNote, onDeleteNote,picture, setPic
 
     const em = `https://www.youtube.com/embed/${note.url}`
 
-    const divClass = `note-preview ${note.color}`
 
-    return <div className={divClass}>
+    return <div className="note-preview">
 
 
         <div className="note-contant">
 
             <div className="top-menu-note">
-                <div className="preview-icon-container" onClick={(ev) => onPiningNote(note.id)}><object className="preview-icon" data="../../../assets/icons/thumbtack-empty.svg" width="25" height="15"></object></div>
             </div>
 
             <div>
@@ -27,7 +25,7 @@ export function NotePreview({ note, onDuplicatNote, onDeleteNote,picture, setPic
 
 
             </div>
-            <div>
+            <div className="note-title">
                 {note['info'].title}
             </div>
 
@@ -45,7 +43,6 @@ export function NotePreview({ note, onDuplicatNote, onDeleteNote,picture, setPic
 
             <div className="bottom-menu-note">
                 <div className="preview-icon-container" onClick={(ev) => onDeleteNote(note.id)}><object className="preview-icon" data="../../../assets/icons/trash.svg" width="25" height="15"></object></div>
-                <div className="preview-icon-container color" onClick={(ev) => onToggleRead(ev, email)}><object className="preview-icon" data="../../../assets/icons/paint-pallet-svgrepo-com.svg" width="25" height="15"></object></div>
                 <div className="preview-icon-container" onClick={(ev) => onDuplicatNote(note)}><object className="preview-icon" data="../../../assets/icons/copies-svgrepo-com.svg" width="25" height="15"></object></div>
             </div>
         </div>

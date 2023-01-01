@@ -33,7 +33,7 @@ export function AddVideo({ info, url, editNote }) {
 
     return <form onSubmit={onSetNewNote} >
         {Vidoe && <div className="video-area">
-                    <iframe width="300" height="315"
+                    <iframe width="330" height="330"
                         src={Vidoe}>
                     </iframe>
                 </div>}
@@ -59,7 +59,7 @@ export function AddVideo({ info, url, editNote }) {
             placeholder="note"
 
         />
-        <button>Filter cars!</button>
+        <button className="submit">add note</button>
 
     </form>
 

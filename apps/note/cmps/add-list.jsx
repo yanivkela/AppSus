@@ -4,9 +4,9 @@ const { useState, useEffect } = React
 
 
 
-export function AddList({toDo , createList}) {
+export function AddList({ toDo, createList }) {
 
-    
+
     function toDoList() {
         event.preventDefault()
         const toDos = item.value.split(',');
@@ -15,15 +15,15 @@ export function AddList({toDo , createList}) {
     }
     return <form onSubmit={toDoList} >
 
-    <input type="textarea"
-        className="note-input"
-        id="item"
-        name="txt"
-        placeholder='Enter a comma-separated list'
-    />
+        <input type="textarea"
+            className="note-input"
+            id="item"
+            name="txt"
+            placeholder='Enter a comma-separated list'
+        />
 
-    <button>Filter cars!</button>
+        <button className="submit">add note</button>
 
-</form>
+    </form>
 
 }

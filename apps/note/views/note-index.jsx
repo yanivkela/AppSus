@@ -17,20 +17,15 @@ export function NoteIndex() {
     const [Type, setype] = useState('note')
     const [color, setColor] = useState('')
 
-
-
-
     useEffect(() => {
         newNote()
     }, [])
-
 
     useEffect(() => {
         loadNotes()
     }, [])
 
-
-    function editNote(info, type, url = "" ) {
+    function editNote(info, type, url = "") {
         const newNote = note
         newNote.info = info
         note['type'] = type
@@ -42,7 +37,6 @@ export function NoteIndex() {
         const newNote = noteService.addtNewNote()
         setNote(newNote)
     }
-
 
     function loadNotes() {
         noteService.getNotes().then(notes => {
@@ -61,8 +55,6 @@ export function NoteIndex() {
             })
 
     }
-
-
 
     function onDeleteNote(id) {
         noteService.deleteNote(id).then(() => {
@@ -95,25 +87,22 @@ export function NoteIndex() {
 
     return <section>
 
-
-
         <div className="main note-main" >
             <div className='add-note'>
-                <div className="preview-icon-container" onClick={() => onSetType('video')}><img className="preview-icon" src="assets/icons/video-svgrepo-com.svg" /></div>
+                <div className="input">
+                    {Type === 'note' && <AddNote info={note['info']} editNote={editNote} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} onSetPicture={onSetPicture} />}
+                    {Type === 'list' && <AddList toDo={note['toDo']} createList={createList} />}
+                    {Type === 'video' && <AddVideo info={note['info']} url={note['url']} editNote={editNote} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />}
+                </div>
 
-                <div className="preview-icon-container" onClick={() => onSetType('list')}><object className="preview-icon" data="../../../assets/icons/list-task-svgrepo-com.svg" width="25" height="15"></object></div>
-                {/* <input type="file" className="file-input btn" name="image" onChange={(event) =>{noteService.onImgInput(event);onSetType('photo')}} /> */}
-                <div className="preview-icon-container" onClick={() => onSetType('note')}><object className="preview-icon" data="../../../assets/icons/note-text-line-svgrepo-com.svg" width="25" height="15"></object></div>
+                <div className="setType">
+                    <div className="preview-icon-container" onClick={() => onSetType('video')}><img className="preview-icon" src="assets/icons/video-svgrepo-com.svg" /></div>
+                    <div className="preview-icon-container" onClick={() => onSetType('list')}><object className="preview-icon" data="../../../assets/icons/list-task-svgrepo-com.svg" width="25" height="15"></object></div>
+                    <div className="preview-icon-container" onClick={() => onSetType('note')}><object className="preview-icon" data="../../../assets/icons/note-text-line-svgrepo-com.svg" width="25" height="15"></object></div>
+                </div>
 
-                {Type === 'note' && <AddNote info={note['info']} editNote={editNote} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote}  onSetPicture={onSetPicture} />}
-                {Type === 'list' && <AddList toDo={note['toDo']} createList={createList} />}
-                {Type === 'video' && <AddVideo info={note['info']} url={note['url']} editNote={editNote} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />}
-                
             </div>
-
-
-            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote}  />
-
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} onDuplicatNote={onDuplicatNote} />
 
 
         </div>

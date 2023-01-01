@@ -27,7 +27,7 @@ export function AddNote({ info, editNote ,onSetPicture }) {
         editNote(info, 'note')
     }
 
-    return <form onSubmit={onSetNewNote} >
+    return <form onSubmit={onSetNewNote}  >
 
         {pictureToDiv && <img className="displayPhoto" src={pictureToDiv} />}
 
@@ -46,7 +46,7 @@ export function AddNote({ info, editNote ,onSetPicture }) {
             placeholder="note"
 
         />
-        <button>Filter cars!</button>
+        <button className="submit">add note</button>
 
     </form>
 
